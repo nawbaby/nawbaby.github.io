@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>solaris - Hexo</title>
+  <title>mermaid的使用 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -166,8 +166,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-10 06:13" pubdate>
-        2020年10月10日 早上
+      <time datetime="2020-10-10 00:00" pubdate>
+        2020年10月10日 凌晨
       </time>
     </span>
   
@@ -178,7 +178,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      107 字
+      205 字
     </span>
   
 
@@ -188,7 +188,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      3
        分钟
     </span>
   
@@ -218,39 +218,67 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">solaris</h1>
+            <h1 style="display: none">mermaid的使用</h1>
             
             <div class="markdown-body" id="post-body">
-              <pre><code class="hljs xl">graph LR
-O<span class="hljs-function"><span class="hljs-title">penSolaris</span>--&gt;</span>illumos</code></pre>
-<blockquote>
-<p><em>OpenSolaris闭源产生了illumos</em></p>
-</blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" srcset="/img/loading.gif" alt="image"></h2><p><strong>illumos的特性</strong></p>
-<ul>
-<li>zfs</li>
-<li>zone 轻量级虚拟机  LXC</li>
-<li>crossbow 网络虚拟化</li>
-<li>Dtrace 系统管理员的武器，macos 上的instruments</li>
-<li>kvm type2虚拟化技术</li>
-</ul>
+              <h3 id="练习在markdown中使用mermaid"><a href="#练习在markdown中使用mermaid" class="headerlink" title="练习在markdown中使用mermaid"></a>练习在markdown中使用mermaid</h3><hr>
+<h4 id="一、基础图形与基础与基础形状"><a href="#一、基础图形与基础与基础形状" class="headerlink" title="一、基础图形与基础与基础形状"></a>一、基础图形与基础与基础形状</h4><pre><code class="hljs angelscript">graph TD;
+<span class="hljs-number">11</span>[直角矩形]
+<span class="hljs-number">22</span>(圆角矩形)
+<span class="hljs-number">33</span>((圆形))
+<span class="hljs-number">44</span>&#123;棱形&#125;
+<span class="hljs-number">55</span>&gt;奇怪的形状]
+<span class="hljs-number">1</span>(起始位置)
+id2(准备材料)
+id3(操作流程)
+id4(收尾工作)
+<span class="hljs-number">1</span> --&gt; id2
+<span class="hljs-number">1</span> ==&gt; id3
+<span class="hljs-number">1</span> -.-&gt; id4
+</code></pre>
 <hr>
-<p><strong>内核</strong></p>
-<blockquote>
-<p>于是illumos = ZFS + Zone + Crossbow + Dtrace + KVM。所有云计算的关键服务在这里集合，形成了一个为云计算而生的系统内核。</p>
-</blockquote>
+<h4 id="二、稍微复杂的图形"><a href="#二、稍微复杂的图形" class="headerlink" title="二、稍微复杂的图形"></a>二、稍微复杂的图形</h4><pre><code class="hljs erlang-repl">sequenceDiagram
+A-&gt;&gt;B: How are you?
+B-&gt;&gt;A: Great!</code></pre>
 <hr>
-<pre><code class="hljs xl">graph LR
-<span class="hljs-function"><span class="hljs-title">illumos</span>--&gt;</span>openindian
-<span class="hljs-function"><span class="hljs-title">illumos</span>--&gt;</span>smartos</code></pre>
-<p><em>smartos的运维管理系统smartDataCenter</em></p>
+<h4 id="三、子图（还没搞明白）"><a href="#三、子图（还没搞明白）" class="headerlink" title="三、子图（还没搞明白）"></a>三、子图（还没搞明白）</h4><pre><code class="hljs armasm"><span class="hljs-symbol">graph</span> TB
+    
+    subgraph one
+    <span class="hljs-built_in">a1</span>
+    <span class="hljs-built_in">a2</span>
+    <span class="hljs-meta">end</span>
+    subgraph two
+    b1--&gt;b2
+    <span class="hljs-meta">end</span>
+    subgraph three
+    <span class="hljs-built_in">c1</span>--&gt;<span class="hljs-built_in">c2</span>
+    <span class="hljs-meta">end</span></code></pre>
+
+
 <hr>
+<h4 id="四、花里胡哨的样式-控制格子的样式"><a href="#四、花里胡哨的样式-控制格子的样式" class="headerlink" title="四、花里胡哨的样式(控制格子的样式)"></a>四、花里胡哨的样式(控制格子的样式)</h4><pre><code class="hljs apache"><span class="hljs-attribute">graph</span> LR
+    <span class="hljs-attribute">id1</span>(Start)--&gt;id<span class="hljs-number">2</span>(Stop)
+    <span class="hljs-attribute">style</span> id<span class="hljs-number">1</span> fill:#f<span class="hljs-number">9</span>f,stroke:#<span class="hljs-number">333</span>,stroke-width:<span class="hljs-number">4</span>px
+    <span class="hljs-attribute">style</span> id<span class="hljs-number">2</span> fill:#ccf,stroke:#f<span class="hljs-number">66</span>,stroke-width:<span class="hljs-number">2</span>px,stroke-dasharray: <span class="hljs-number">5</span>, <span class="hljs-number">5</span></code></pre>
+<hr>
+<h4 id="五、图标"><a href="#五、图标" class="headerlink" title="五、图标"></a>五、图标</h4><pre><code class="hljs reasonml">graph LR
+    B<span class="hljs-literal">[&quot;<span class="hljs-identifier">fa</span>:<span class="hljs-identifier">fa</span>-<span class="hljs-identifier">twitter</span> 和平&quot;]</span>
+    B--&gt;C<span class="hljs-literal">[<span class="hljs-identifier">fa</span>:<span class="hljs-identifier">fa</span>-<span class="hljs-identifier">ban</span> 禁止]</span>
+    B--&gt;<span class="hljs-constructor">D(<span class="hljs-params">fa</span>:<span class="hljs-params">fa</span>-<span class="hljs-params">spinner</span>)</span>;
+    B--&gt;<span class="hljs-constructor">E(A <span class="hljs-params">fa</span>:<span class="hljs-params">fa</span>-<span class="hljs-params">camera</span>-<span class="hljs-params">retro</span> 也许?)</span>;</code></pre>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    
+                  </div>
                 
               </div>
               
@@ -261,9 +289,9 @@ O<span class="hljs-function"><span class="hljs-title">penSolaris</span>--&gt;</s
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/10/%E7%AC%94%E8%AE%B0/">
+                      <a href="/2020/10/10/solaris/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">1号笔记</span>
+                        <span class="hidden-mobile">solaris</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -271,8 +299,8 @@ O<span class="hljs-function"><span class="hljs-title">penSolaris</span>--&gt;</s
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/10/mermaid/">
-                        <span class="hidden-mobile">mermaid的使用</span>
+                      <a href="/2020/10/09/rabbit/">
+                        <span class="hidden-mobile">rabbit</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -291,8 +319,8 @@ O<span class="hljs-function"><span class="hljs-title">penSolaris</span>--&gt;</s
     <div id="disqus_thread"></div>
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://example.com/2020/10/10/solaris/';
-        this.page.identifier = '/2020/10/10/solaris/';
+        this.page.url = 'http://example.com/2020/10/10/mermaid/';
+        this.page.identifier = '/2020/10/10/mermaid/';
       };
       function loadDisqus() {
         (function () {
@@ -445,7 +473,7 @@ O<span class="hljs-function"><span class="hljs-title">penSolaris</span>--&gt;</s
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "solaris&nbsp;",
+        "mermaid的使用&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

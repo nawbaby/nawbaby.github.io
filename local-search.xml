@@ -4,13 +4,51 @@
   
   
   <entry>
+    <title>1号笔记</title>
+    <link href="/2020/10/10/%E7%AC%94%E8%AE%B0/"/>
+    <url>/2020/10/10/%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>用引用的方式写正文应该可以提升下阅读的体验</p></blockquote><p>事实证明vi也可以用来写md,所以md软件的作用大概是体现所见即所得，</p><p>处于练手期的同学使用的</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>随笔</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>solaris</title>
     <link href="/2020/10/10/solaris/"/>
     <url>/2020/10/10/solaris/</url>
     
-    <content type="html"><![CDATA[<pre><code class="hljs mermaid">graph LROpenSolaris--&gt;illumos</code></pre><blockquote><p><em>OpenSolaris闭源产生了illumos</em></p></blockquote><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" alt="image"></h2><p><strong>illumos的特性</strong></p><ul><li>zfs</li><li>zone 轻量级虚拟机  LXC</li><li>crossbow 网络虚拟化</li><li>Dtrace 系统管理员的武器，macos 上的instruments</li><li>kvm type2虚拟化技术</li></ul><hr><p><strong>内核</strong></p><blockquote><p>于是illumos = ZFS + Zone + Crossbow + Dtrace + KVM。所有云计算的关键服务在这里集合，形成了一个为云计算而生的系统内核。</p></blockquote><hr><pre><code class="hljs mermaid">graph LRillumos--&gt;openindianillumos--&gt;smartos</code></pre><p><em>smartos的运维管理系统smartDataCenter</em></p><hr>]]></content>
+    <content type="html"><![CDATA[<pre><code class="hljs xl">graph LRO<span class="hljs-function"><span class="hljs-title">penSolaris</span>--&gt;</span>illumos</code></pre><blockquote><p><em>OpenSolaris闭源产生了illumos</em></p></blockquote><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" alt="image"></h2><p><strong>illumos的特性</strong></p><ul><li>zfs</li><li>zone 轻量级虚拟机  LXC</li><li>crossbow 网络虚拟化</li><li>Dtrace 系统管理员的武器，macos 上的instruments</li><li>kvm type2虚拟化技术</li></ul><hr><p><strong>内核</strong></p><blockquote><p>于是illumos = ZFS + Zone + Crossbow + Dtrace + KVM。所有云计算的关键服务在这里集合，形成了一个为云计算而生的系统内核。</p></blockquote><hr><pre><code class="hljs xl">graph LR<span class="hljs-function"><span class="hljs-title">illumos</span>--&gt;</span>openindian<span class="hljs-function"><span class="hljs-title">illumos</span>--&gt;</span>smartos</code></pre><p><em>smartos的运维管理系统smartDataCenter</em></p><hr>]]></content>
     
     
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>mermaid的使用</title>
+    <link href="/2020/10/10/mermaid/"/>
+    <url>/2020/10/10/mermaid/</url>
+    
+    <content type="html"><![CDATA[<h3 id="练习在markdown中使用mermaid"><a href="#练习在markdown中使用mermaid" class="headerlink" title="练习在markdown中使用mermaid"></a>练习在markdown中使用mermaid</h3><hr><h4 id="一、基础图形与基础与基础形状"><a href="#一、基础图形与基础与基础形状" class="headerlink" title="一、基础图形与基础与基础形状"></a>一、基础图形与基础与基础形状</h4><pre><code class="hljs angelscript">graph TD;<span class="hljs-number">11</span>[直角矩形]<span class="hljs-number">22</span>(圆角矩形)<span class="hljs-number">33</span>((圆形))<span class="hljs-number">44</span>&#123;棱形&#125;<span class="hljs-number">55</span>&gt;奇怪的形状]<span class="hljs-number">1</span>(起始位置)id2(准备材料)id3(操作流程)id4(收尾工作)<span class="hljs-number">1</span> --&gt; id2<span class="hljs-number">1</span> ==&gt; id3<span class="hljs-number">1</span> -.-&gt; id4</code></pre><hr><h4 id="二、稍微复杂的图形"><a href="#二、稍微复杂的图形" class="headerlink" title="二、稍微复杂的图形"></a>二、稍微复杂的图形</h4><pre><code class="hljs erlang-repl">sequenceDiagramA-&gt;&gt;B: How are you?B-&gt;&gt;A: Great!</code></pre><hr><h4 id="三、子图（还没搞明白）"><a href="#三、子图（还没搞明白）" class="headerlink" title="三、子图（还没搞明白）"></a>三、子图（还没搞明白）</h4><pre><code class="hljs armasm"><span class="hljs-symbol">graph</span> TB        subgraph one    <span class="hljs-built_in">a1</span>    <span class="hljs-built_in">a2</span>    <span class="hljs-meta">end</span>    subgraph two    b1--&gt;b2    <span class="hljs-meta">end</span>    subgraph three    <span class="hljs-built_in">c1</span>--&gt;<span class="hljs-built_in">c2</span>    <span class="hljs-meta">end</span></code></pre><hr><h4 id="四、花里胡哨的样式-控制格子的样式"><a href="#四、花里胡哨的样式-控制格子的样式" class="headerlink" title="四、花里胡哨的样式(控制格子的样式)"></a>四、花里胡哨的样式(控制格子的样式)</h4><pre><code class="hljs apache"><span class="hljs-attribute">graph</span> LR    <span class="hljs-attribute">id1</span>(Start)--&gt;id<span class="hljs-number">2</span>(Stop)    <span class="hljs-attribute">style</span> id<span class="hljs-number">1</span> fill:#f<span class="hljs-number">9</span>f,stroke:#<span class="hljs-number">333</span>,stroke-width:<span class="hljs-number">4</span>px    <span class="hljs-attribute">style</span> id<span class="hljs-number">2</span> fill:#ccf,stroke:#f<span class="hljs-number">66</span>,stroke-width:<span class="hljs-number">2</span>px,stroke-dasharray: <span class="hljs-number">5</span>, <span class="hljs-number">5</span></code></pre><hr><h4 id="五、图标"><a href="#五、图标" class="headerlink" title="五、图标"></a>五、图标</h4><pre><code class="hljs reasonml">graph LR    B<span class="hljs-literal">[&quot;<span class="hljs-identifier">fa</span>:<span class="hljs-identifier">fa</span>-<span class="hljs-identifier">twitter</span> 和平&quot;]</span>    B--&gt;C<span class="hljs-literal">[<span class="hljs-identifier">fa</span>:<span class="hljs-identifier">fa</span>-<span class="hljs-identifier">ban</span> 禁止]</span>    B--&gt;<span class="hljs-constructor">D(<span class="hljs-params">fa</span>:<span class="hljs-params">fa</span>-<span class="hljs-params">spinner</span>)</span>;    B--&gt;<span class="hljs-constructor">E(A <span class="hljs-params">fa</span>:<span class="hljs-params">fa</span>-<span class="hljs-params">camera</span>-<span class="hljs-params">retro</span> 也许?)</span>;</code></pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>随笔</tag>
+      
+    </tags>
     
   </entry>
   
