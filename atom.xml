@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-10-09T07:01:49.501Z</updated>
+  <updated>2020-10-10T06:19:16.338Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>solaris</title>
+    <link href="http://example.com/2020/10/10/solaris/"/>
+    <id>http://example.com/2020/10/10/solaris/</id>
+    <published>2020-10-10T06:13:48.000Z</published>
+    <updated>2020-10-10T06:19:16.338Z</updated>
+    
+    <content type="html"><![CDATA[<pre><code class="hljs mermaid">graph LROpenSolaris--&gt;illumos</code></pre><blockquote><p><em>OpenSolaris闭源产生了illumos</em></p></blockquote><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" alt="image"></h2><p><strong>illumos的特性</strong></p><ul><li>zfs</li><li>zone 轻量级虚拟机  LXC</li><li>crossbow 网络虚拟化</li><li>Dtrace 系统管理员的武器，macos 上的instruments</li><li>kvm type2虚拟化技术</li></ul><hr><p><strong>内核</strong></p><blockquote><p>于是illumos = ZFS + Zone + Crossbow + Dtrace + KVM。所有云计算的关键服务在这里集合，形成了一个为云计算而生的系统内核。</p></blockquote><hr><pre><code class="hljs xl">graph LR<span class="hljs-function"><span class="hljs-title">illumos</span>--&gt;</span>openindian<span class="hljs-function"><span class="hljs-title">illumos</span>--&gt;</span>smartos</code></pre><p><em>smartos的运维管理系统smartDataCenter</em></p><hr>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;pre&gt;&lt;code class=&quot;hljs mermaid&quot;&gt;graph LR
+OpenSolaris--&amp;gt;illumos&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;OpenSolaris闭源产生了illumos&lt;/em&gt;&lt;/p&gt;
+&lt;/blockq</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>rabbit</title>
