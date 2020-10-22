@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>solaris - Hexo</title>
+  <title>练手题目 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -168,8 +168,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-10 06:13" pubdate>
-        2020年10月10日 早上
+      <time datetime="2020-10-15 06:52" pubdate>
+        2020年10月15日 早上
       </time>
     </span>
   
@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      113 字
+      282 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      4
        分钟
     </span>
   
@@ -220,35 +220,59 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">solaris</h1>
+            <h1 style="display: none">练手题目</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>Solaris  OpenIndian相关介绍</p>
-<a id="more"></a>
-<pre><code class="hljs mermaid">graph LR
-OpenSolaris--&gt;illumos</code></pre>
-<blockquote>
-<p><em>OpenSolaris闭源产生了illumos</em></p>
+              <h3 id="打印练习格式控制出现的小问题"><a href="#打印练习格式控制出现的小问题" class="headerlink" title="打印练习格式控制出现的小问题"></a>打印练习格式控制出现的小问题</h3><p>偶然运行之前写的练手题目<br>！<a href="/img/strange_tri.jpg">img</a><br>由于占据格子的问题，当数据大于9的时候，会出现排版上的问题<br>好吧算是小问题，但是细看之下发现了另外一个大问题，第一行的1怎么不见了<br>特定加了个–&gt;指出来</p>
+<p>分析代码唯一的区别，大于9的时候会执行</p>
+<pre><code class="hljs c"><span class="hljs-keyword">if</span>(n&lt;<span class="hljs-number">0</span>||n&gt;<span class="hljs-number">9</span>)
+   &#123;
+       <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The num must between 1 to 9!&quot;</span>);
+   &#125;</code></pre>
+<hr>
+<h4 id="分析下产生的原因"><a href="#分析下产生的原因" class="headerlink" title="分析下产生的原因"></a>分析下产生的原因</h4><blockquote>
+<p>在看到输出前已经有printf且没有换行之后，加上”\n”进行换行问题解决了</p>
 </blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" srcset="/img/loading.gif" alt="image"></h2><p><strong>illumos的特性</strong></p>
-<ul>
-<li>zfs</li>
-<li>zone 轻量级虚拟机  LXC</li>
-<li>crossbow 网络虚拟化</li>
-<li>Dtrace 系统管理员的武器，macos 上的instruments</li>
-<li>kvm type2虚拟化技术</li>
-</ul>
-<hr>
-<p><strong>内核</strong></p>
-<blockquote>
-<p>于是illumos = ZFS + Zone + Crossbow + Dtrace + KVM。所有云计算的关键服务在这里集合，形成了一个为云计算而生的系统内核。</p>
-</blockquote>
-<hr>
-<pre><code class="hljs mermaid">graph LR
-illumos--&gt;openindian
-illumos--&gt;smartos</code></pre>
-<p><em>smartos的运维管理系统smartDataCenter</em></p>
-<hr>
+<h5 id="更深层次测原因"><a href="#更深层次测原因" class="headerlink" title="更深层次测原因"></a>更深层次测原因</h5><hr>
+<p>格式控制.c</p>
+<pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pyramid</span><span class="hljs-params">( <span class="hljs-keyword">int</span> n )</span></span>;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span> n;
+
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);
+    pyramid(n);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+&#125;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pyramid</span><span class="hljs-params">( <span class="hljs-keyword">int</span> n)</span></span>
+<span class="hljs-function"></span>&#123;
+    <span class="hljs-keyword">int</span>  pos=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span>  prenull=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">int</span>  num=<span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">if</span>(n&lt;<span class="hljs-number">0</span>||n&gt;<span class="hljs-number">9</span>)
+    &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The num must between 1 to 9!&quot;</span>);
+
+    &#125;
+    <span class="hljs-keyword">for</span>(pos=<span class="hljs-number">1</span>;pos&lt;n+<span class="hljs-number">1</span>;pos++)
+    &#123;
+        <span class="hljs-keyword">for</span>(prenull=<span class="hljs-number">1</span>;prenull&lt;=n-pos;prenull++)
+        &#123;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);
+        &#125;
+        <span class="hljs-keyword">for</span>(num=<span class="hljs-number">1</span>;num&lt;=pos;num++)
+        &#123;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,pos);
+        &#125;
+       <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    &#125;
+&#125;</code></pre>
 
             </div>
             <hr>
@@ -265,18 +289,12 @@ illumos--&gt;smartos</code></pre>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/10/note_write_md/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">1号笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/10/mermaid/">
-                        <span class="hidden-mobile">mermaid的使用</span>
+                      <a href="/2020/10/13/%E6%B5%8B%E8%AF%95%E5%A4%9A%E6%A0%87%E7%AD%BE%E4%BB%A5%E5%8F%8A%E5%88%86%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <span class="hidden-mobile">测试多标签以及分类的使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -295,8 +313,8 @@ illumos--&gt;smartos</code></pre>
     <div id="disqus_thread"></div>
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://example.com/2020/10/10/solaris/';
-        this.page.identifier = '/2020/10/10/solaris/';
+        this.page.url = 'http://example.com/2020/10/15/%E6%89%93%E5%8D%B0%E7%BB%83%E4%B9%A0%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98/';
+        this.page.identifier = '/2020/10/15/%E6%89%93%E5%8D%B0%E7%BB%83%E4%B9%A0%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98/';
       };
       function loadDisqus() {
         (function () {
@@ -475,7 +493,7 @@ illumos--&gt;smartos</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "solaris&nbsp;",
+        "练手题目&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>solaris - Hexo</title>
+  <title>图表以及网页的使用demo - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -168,8 +168,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-10 06:13" pubdate>
-        2020年10月10日 早上
+      <time datetime="2020-10-13 00:00" pubdate>
+        2020年10月13日 凌晨
       </time>
     </span>
   
@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      113 字
+      176 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      3
        分钟
     </span>
   
@@ -220,41 +220,104 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">solaris</h1>
+            <h1 style="display: none">图表以及网页的使用demo</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>Solaris  OpenIndian相关介绍</p>
+              <p>Echart和iframe的使用</p>
 <a id="more"></a>
-<pre><code class="hljs mermaid">graph LR
-OpenSolaris--&gt;illumos</code></pre>
-<blockquote>
-<p><em>OpenSolaris闭源产生了illumos</em></p>
-</blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" srcset="/img/loading.gif" alt="image"></h2><p><strong>illumos的特性</strong></p>
-<ul>
-<li>zfs</li>
-<li>zone 轻量级虚拟机  LXC</li>
-<li>crossbow 网络虚拟化</li>
-<li>Dtrace 系统管理员的武器，macos 上的instruments</li>
-<li>kvm type2虚拟化技术</li>
-</ul>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/echarts-gl@1.1.1/dist/echarts-gl.min.js"></script>
+
 <hr>
-<p><strong>内核</strong></p>
-<blockquote>
-<p>于是illumos = ZFS + Zone + Crossbow + Dtrace + KVM。所有云计算的关键服务在这里集合，形成了一个为云计算而生的系统内核。</p>
-</blockquote>
-<hr>
-<pre><code class="hljs mermaid">graph LR
-illumos--&gt;openindian
-illumos--&gt;smartos</code></pre>
-<p><em>smartos的运维管理系统smartDataCenter</em></p>
-<hr>
+<script src="https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.min.js"></script>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main'));
+  // 指定图表的配置项和数据
+  var option = {
+    xAxis: {
+        type: 'category',
+        boundaryGap: false
+    },
+    yAxis: {
+        type: 'value',
+        boundaryGap: [0, '30%']
+    },
+    visualMap: {
+        type: 'piecewise',
+        show: false,
+        dimension: 0,
+        seriesIndex: 0,
+        pieces: [{
+            gt: 1,
+            lt: 3,
+            color: 'rgba(0, 180, 0, 0.5)'
+        }, {
+            gt: 5,
+            lt: 7,
+            color: 'rgba(0, 180, 0, 0.5)'
+        }]
+    },
+    series: [
+        {
+            type: 'line',
+            smooth: 0.6,
+            symbol: 'none',
+            lineStyle: {
+                color: 'green',
+                width: 5
+            },
+            markLine: {
+                symbol: ['none', 'none'],
+                label: {show: false},
+                data: [
+                    {xAxis: 1},
+                    {xAxis: 3},
+                    {xAxis: 5},
+                    {xAxis: 7}
+                ]
+            },
+            areaStyle: {},
+            data: [
+                ['2019-10-10', 200],
+                ['2019-10-11', 400],
+                ['2019-10-12', 650],
+                ['2019-10-13', 500],
+                ['2019-10-14', 250],
+                ['2019-10-15', 300],
+                ['2019-10-16', 450],
+                ['2019-10-17', 300],
+                ['2019-10-18', 100]
+            ]
+        }
+    ]
+};
+  // 使用刚指定的配置项和数据显示图表。
+  myChart.setOption(option);
+  // 刷新调整
+  window.onresize = function () {
+    myChart.resize();
+  }
+</script>
+
+<iframe src="http://www.baidu.com/" width="100%" height="500" name="topFrame" scrolling="yes"  noresize="noresize" frameborder="0" id="topFrame"></iframe>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a>
+                    
+                  </div>
                 
               </div>
               
@@ -265,9 +328,9 @@ illumos--&gt;smartos</code></pre>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/10/note_write_md/">
+                      <a href="/2020/10/13/%E6%B5%8B%E8%AF%95%E5%A4%9A%E6%A0%87%E7%AD%BE%E4%BB%A5%E5%8F%8A%E5%88%86%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">1号笔记</span>
+                        <span class="hidden-mobile">测试多标签以及分类的使用</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -275,8 +338,8 @@ illumos--&gt;smartos</code></pre>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/10/mermaid/">
-                        <span class="hidden-mobile">mermaid的使用</span>
+                      <a href="/2020/10/12/share_value_account/">
+                        <span class="hidden-mobile">账户信息</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -295,8 +358,8 @@ illumos--&gt;smartos</code></pre>
     <div id="disqus_thread"></div>
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://example.com/2020/10/10/solaris/';
-        this.page.identifier = '/2020/10/10/solaris/';
+        this.page.url = 'http://example.com/2020/10/13/echarts/';
+        this.page.identifier = '/2020/10/13/echarts/';
       };
       function loadDisqus() {
         (function () {
@@ -475,7 +538,7 @@ illumos--&gt;smartos</code></pre>
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "solaris&nbsp;",
+        "图表以及网页的使用demo&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,
