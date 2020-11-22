@@ -17,9 +17,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="yancey">
+  <meta name="author" content="John Doe">
   <meta name="keywords" content="">
-  <title>脚本模板化 - Hexo</title>
+  <title>笔记分类的感受 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -168,8 +168,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-12 11:18" pubdate>
-        2020年10月12日 上午
+      <time datetime="2020-10-18 01:38" pubdate>
+        2020年10月18日 凌晨
       </time>
     </span>
   
@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      319 字
+      91 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      1
        分钟
     </span>
   
@@ -220,93 +220,17 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">脚本模板化</h1>
+            <h1 style="display: none">笔记分类的感受</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>shell脚本demo</p>
+              <p><strong>最近被笔记分类折磨哭了</strong></p>
 <a id="more"></a>
-<p><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" srcset="/img/loading.gif" alt="image"></p>
+
 <blockquote>
-<ul>
-<li>解决需要将某些步骤的脚本重复粘贴到shell中执行</li>
-<li>一些操作是有步骤的并且都是可以用命令执行的</li>
-<li>不用翻笔记然后复制粘贴脚本执行</li>
-</ul>
+<p>由于笔记内容大多会存在交叉的问题；<br>而在有道云笔记中使用的是文件夹分层原则，部分文章可以同时属于两个小类别，<br>也许是分类维度不清晰导致的？</p>
 </blockquote>
-<h5 id="脚本demo"><a href="#脚本demo" class="headerlink" title="脚本demo"></a>脚本demo</h5><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span>
-stty erase &#x27;^H&#x27;
-function_title ()
-&#123;
-echo 
-&quot;
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#磁带库操作命令集成脚本　       —author guoyanping  </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#选择底下的操作序号</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#***基础环境设置</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># １、setenforce 0              ## 关闭 selinux</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ２、service iptables stop     ##关闭防火墙</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ３、service mhvtl start       ##启动磁带库软件，这样 lscssi -g 才能显示那些磁带</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ４、service tgtd  start</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#***配置磁带库</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ５、lsscsi -g                 ## 显示虚拟磁带库中的对应的磁盘符号便于编辑tgt共享设置</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ６、vi /etc/tgt/targets.conf  ##修改配置文件</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ７、service tgtd reload       ## 修改配置文件是否成功完全看这个，stop，start  无法替代。</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ８、tgtadm --lld iscsi --mode target --op show  ## tgtd 与mhvtl合作 将target共享出去。</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#***使用帮助</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ０、看下这个操作栏</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># -1、退出</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 也可直接输入你想执行的命令 </span></span>
-&quot;
-&#125;
-
-function_title
-while true
-do
-read  -p &quot;输入需要进行的操作:&quot; choice
-case $choice in
-
-	1)
-	setenforce 0 
-        getenforce
-	;;
-	2)
-	service iptables stop  
-	;;
-	3)
-	service mhvtl start 
-	;;
-	4)
-	service tgtd  start 
-	;;
-	
-	5)
-	lsscsi -g 
-	;;
-	6)
-	vi /etc/tgt/targets.conf
-	;;
-	7)
-	service tgtd reload 
-	;;
-	8)
-	tgtadm --lld iscsi --mode target --op show
-	;;
-	
-    0)
-    function_title
-    ;;
-	-1)
-	exit
-	;;
-	*)
-<span class="hljs-meta">	$</span><span class="bash">choice</span>
-	;;
-esac
-done
-
-
-
-
-</code></pre>
+<hr>
+<p>而且不同的笔记下分类原则肯定不相同；</p>
 
             </div>
             <hr>
@@ -316,7 +240,7 @@ done
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/">技术知识</a>
+                      <a class="hover-with-bg" href="/categories/%E9%9A%8F%E7%AC%94/">随笔</a>
                     
                   </div>
                 
@@ -330,9 +254,9 @@ done
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/12/share_value_account/">
+                      <a href="/2020/10/19/%E6%89%93%E5%8D%B0%E7%BB%83%E4%B9%A0%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">账户信息</span>
+                        <span class="hidden-mobile">c打印控制Debug</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -340,8 +264,8 @@ done
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/10/note_write_md/">
-                        <span class="hidden-mobile">使用md写文章的感受</span>
+                      <a href="/2020/10/13/%E6%B5%8B%E8%AF%95%E5%A4%9A%E6%A0%87%E7%AD%BE%E4%BB%A5%E5%8F%8A%E5%88%86%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                        <span class="hidden-mobile">测试多标签以及分类的使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -360,8 +284,8 @@ done
     <div id="disqus_thread"></div>
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://example.com/2020/10/12/interactive_shell/';
-        this.page.identifier = '/2020/10/12/interactive_shell/';
+        this.page.url = 'http://example.com/2020/10/18/%E8%A2%AB%E7%AC%94%E8%AE%B0%E5%88%86%E7%B1%BB%E6%8A%98%E7%A3%A8%E7%96%AF%E4%BA%86/';
+        this.page.identifier = '/2020/10/18/%E8%A2%AB%E7%AC%94%E8%AE%B0%E5%88%86%E7%B1%BB%E6%8A%98%E7%A3%A8%E7%96%AF%E4%BA%86/';
       };
       function loadDisqus() {
         (function () {
@@ -540,7 +464,7 @@ done
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "脚本模板化&nbsp;",
+        "笔记分类的感受&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

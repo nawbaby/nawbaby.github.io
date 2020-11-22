@@ -17,9 +17,9 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="">
-  <meta name="author" content="yancey">
+  <meta name="author" content="Yancey">
   <meta name="keywords" content="">
-  <title>脚本模板化 - Hexo</title>
+  <title>公历农历的简单认知 - Hexo</title>
 
   <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
 
@@ -168,8 +168,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2020-10-12 11:18" pubdate>
-        2020年10月12日 上午
+      <time datetime="2020-11-22 13:42" pubdate>
+        2020年11月22日 下午
       </time>
     </span>
   
@@ -180,7 +180,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      319 字
+      1.7k 字
     </span>
   
 
@@ -190,7 +190,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4
+      17
        分钟
     </span>
   
@@ -220,105 +220,64 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto" id="post">
             <!-- SEO header -->
-            <h1 style="display: none">脚本模板化</h1>
+            <h1 style="display: none">公历农历的简单认知</h1>
             
             <div class="markdown-body" id="post-body">
-              <p>shell脚本demo</p>
+              <p>公历 农历 闰年 闰月</p>
 <a id="more"></a>
-<p><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" srcset="/img/loading.gif" alt="image"></p>
-<blockquote>
-<ul>
-<li>解决需要将某些步骤的脚本重复粘贴到shell中执行</li>
-<li>一些操作是有步骤的并且都是可以用命令执行的</li>
-<li>不用翻笔记然后复制粘贴脚本执行</li>
-</ul>
+<p>当前历法规则：</p>
+<h3 id="公历（）："><a href="#公历（）：" class="headerlink" title="公历（）："></a>公历（）：</h3><p>1公历年=365~366天，<br><em>存在闰年，闰年分给哪些年：</em><br><img src="/images/cata%E9%97%B0%E5%B9%B4%E5%88%A4%E6%96%AD%E6%B5%81%E7%A8%8B%E5%9B%BE.png" srcset="/img/loading.gif" alt="流程图"></p>
+<p>产生的原因：<br>地球绕太阳运行周期为365天5小时48分46秒（合365.24219天）即一回归年，<br>原因：0.24219<em>4    =0.96876（天）   每四年进行一次修正，调整一：每四年需要加一天；<br>原因：0.24219</em>400=96.876    (天)      如果按照调整一，每四百年会产生100个闰年，有三天的误差需要修正；因此需要减少三个闰年。因此产生调整二：在调整一的基础上每400年需要减少三个闰年。所以100,200,300不是闰年。<br>个人推论：按4000年算：0.24219*400 = 968.76  ，<br>按照调整一和调整二：补充了970个闰年，因此4000年中得挑一个闰年将其除名，仅个人推论；<br>当然这是建立在一个回归年=365.24219天的基础上。</p>
+<h3 id="农历"><a href="#农历" class="headerlink" title="农历"></a>农历</h3><p><strong>（有人称为阴历，其实是阴阳合历），符合月相的变化：</strong></p>
+<p> 为了协调回归年与朔望月之间的天数，于是产生了阴阳历，即农历。方法是在历法中加入二十四节气以及“19年7闰”法（即在19个农历年中加上7个闰年。农历闰年多一个闰月，因此一年平均有383.8978天，而农历平年平均有354.3672天。</p>
+<p><strong>农历</strong> ：如何确定一个农历年有多少天？<br>答：那得先明白一个农历月有多少天，和一个农历年有多少月。即确定农历月是如何定义的。先给出一个结论：一个农历月有29或者30天，一个农历年平年12个月，月亮绕地球12圈；一个农历闰年13个月，月亮绕地球13圈。19年中有7个闰年。</p>
+<p><strong>农历月的定义</strong>：农历的一个月是定朔法确定的朔望月。月亮绕地球公转一周的时间。</p>
+<p>朔日：    月球移到地球和太阳中间时的那一天叫朔日。将这天定为初一。  </p>
+<p>朔望月：  月相完整变化的一个周期，平均29.53天。  </p>
+<p>因为朔望月的存在，农历的月分为大月和小月，29天和30天</p>
+<p>通过定朔法确定：南朝刘宋何承天撰元嘉历，主张废平朔而用定朔，也就是以日月黄经相等的时刻（月球移到地球和太阳中间）定为朔，以这天为朔日。以日月黄经相差一百八十度的时刻为望，以这天为望日。</p>
+<h3 id="一个农历年有多少个月："><a href="#一个农历年有多少个月：" class="headerlink" title="一个农历年有多少个月："></a>一个农历年有多少个月：</h3><p> 答：平年12个月；闰年13个月，但是这些月的大小不固定，因为大小月是根据天文决定的，不是人为规定的。</p>
+<p>个人计算：<br>   农历平年平均天数：29.5<em>12=354<br>   农历闰年平均天数：29.5</em>13=383.5</p>
+<h3 id="为什么会有19年7闰的现象："><a href="#为什么会有19年7闰的现象：" class="headerlink" title="为什么会有19年7闰的现象："></a>为什么会有19年7闰的现象：</h3><pre><code class="hljs angelscript">(<span class="hljs-number">365</span><span class="hljs-number">-354</span>）* <span class="hljs-number">19</span> = <span class="hljs-number">209</span>       
+<span class="hljs-number">29.5</span> * <span class="hljs-number">7</span>  = <span class="hljs-number">206.5</span>
+<span class="hljs-number">365</span> * <span class="hljs-number">19</span> = <span class="hljs-number">6935</span>
+<span class="hljs-number">354</span> * <span class="hljs-number">12</span> + <span class="hljs-number">383.5</span> * <span class="hljs-number">7</span> = <span class="hljs-number">6932.5</span>
+个人结论：是寻找<span class="hljs-number">11</span>和<span class="hljs-number">29.5</span>的最小公倍数。</code></pre>
+
+<h3 id="如何确定农历闰年"><a href="#如何确定农历闰年" class="headerlink" title="如何确定农历闰年"></a>如何确定农历闰年</h3><p><code>19年中哪7年是闰年，以及闰月是哪个月?</code></p>
+<p>答： 由节气决定，如果从某个十一月开始到下一个十一月（不含）之间有13个 农历月，则取其中最先出现的一个不包含中气的农历月为闰月。这个刚开始看也是懵的。原因是十一月是人为定义的：冬至所在的农历月为十一月。通过与节气联系，不让月份与季节偏差太大。</p>
+<h3 id="关于二十四节气的定义："><a href="#关于二十四节气的定义：" class="headerlink" title="关于二十四节气的定义："></a>关于二十四节气的定义：</h3><pre><code class="hljs plain">节气：
+奇数序号为节令；偶数序号为中气；
+十二节令：
+立春、惊蛰、清明、立夏、芒种、小暑、立秋、白露、寒露、立冬、大雪、小寒。
+十二中气：
+雨水、春分、谷雨、小满、夏至、大暑、处暑、秋分、霜降、小雪、冬至、大寒。</code></pre>
+<p><strong>定气法</strong>： 太阳从黄经零度起，沿黄经每运行15度所经历的时日称为一个节气。每年运行360度，共经历24个节气。  </p>
+<p>春分   太阳过黄经零度，太阳光直射赤道，地球上的昼夜时间相等，所以春分秋分又称为“日夜分”。<br>夏至：太阳过黄经九十度为夏至。夏至当天太阳直射北回归线，<br>秋分：太阳过黄经一百八十度。<br>冬至： 太阳经黄经二百七十度。</p>
+<p>通过**<em>定气法**</em> 确定的节气，间隔在14-16天。一个完整的二十四节气与一个回归年的时间相差很小，<br>而且节气是与太阳的位置联系的，对季节的联系很精确，对指导农业活动的意义比较大。</p>
+<pre><code class="hljs angelscript">总结：
+公历：通过每年的天数<span class="hljs-number">365</span>~<span class="hljs-number">366</span>变化，来拟合一个回归年<span class="hljs-number">365.24219</span>天；
+农历：反映月相的变化，并且结合回归年的大小；
+二十四节气： 太阳在黄道上的位置，一个完整的二十四节气周期对应一个回归年；
+
+不过感觉无论是定义初一和节气得依靠观测天文，历法的精确度与观测天文的能力有关。</code></pre>
+
+
+
+
+
+<h3 id="附加知识"><a href="#附加知识" class="headerlink" title="附加知识"></a>附加知识</h3><blockquote>
+<p>在1645年以前，农历使用平气注历，各月之后出现闰月的概率相等。之后使用定气注历，各月出现闰月的概率变为不相等。</p>
 </blockquote>
-<h5 id="脚本demo"><a href="#脚本demo" class="headerlink" title="脚本demo"></a>脚本demo</h5><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span>
-stty erase &#x27;^H&#x27;
-function_title ()
-&#123;
-echo 
-&quot;
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#磁带库操作命令集成脚本　       —author guoyanping  </span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#选择底下的操作序号</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#***基础环境设置</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># １、setenforce 0              ## 关闭 selinux</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ２、service iptables stop     ##关闭防火墙</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ３、service mhvtl start       ##启动磁带库软件，这样 lscssi -g 才能显示那些磁带</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ４、service tgtd  start</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#***配置磁带库</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ５、lsscsi -g                 ## 显示虚拟磁带库中的对应的磁盘符号便于编辑tgt共享设置</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ６、vi /etc/tgt/targets.conf  ##修改配置文件</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ７、service tgtd reload       ## 修改配置文件是否成功完全看这个，stop，start  无法替代。</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ８、tgtadm --lld iscsi --mode target --op show  ## tgtd 与mhvtl合作 将target共享出去。</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#***使用帮助</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ０、看下这个操作栏</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># -1、退出</span></span>
-<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 也可直接输入你想执行的命令 </span></span>
-&quot;
-&#125;
-
-function_title
-while true
-do
-read  -p &quot;输入需要进行的操作:&quot; choice
-case $choice in
-
-	1)
-	setenforce 0 
-        getenforce
-	;;
-	2)
-	service iptables stop  
-	;;
-	3)
-	service mhvtl start 
-	;;
-	4)
-	service tgtd  start 
-	;;
-	
-	5)
-	lsscsi -g 
-	;;
-	6)
-	vi /etc/tgt/targets.conf
-	;;
-	7)
-	service tgtd reload 
-	;;
-	8)
-	tgtadm --lld iscsi --mode target --op show
-	;;
-	
-    0)
-    function_title
-    ;;
-	-1)
-	exit
-	;;
-	*)
-<span class="hljs-meta">	$</span><span class="bash">choice</span>
-	;;
-esac
-done
-
-
-
-
-</code></pre>
+<blockquote>
+<p>目前的公历称为格里高利历，在这之前使用的是儒略历：一年365天，每四年加一闰日，即平均一年365．25日。这样一年的平均长度为365.25天，比地球绕日旋转的回归年365.2422天多0.0078天，到了公元1582年，积累的差值达到了10天左右——也就是说这时日历上的6月22日，与地球真正的夏至日差了十天，再往后积累，也许会出现夏至日下雪的情况了。为消除这个差数（罗马教皇格里高利十三世进行历法改革），把1582年10月4日的下一日定为10月15日，并采用400年制97个闰日的法则，整百年只有被400除尽的才为闰年，称为格里高利历。这样历年的平均长度为365.2425日，误差为0.0003天，要3300多年才与回归年长度差一天。</p>
+</blockquote>
+<p>已有规则：19年7闰；<br>29.53（29.530588）天；<br>汉代的《太初历》把此一数据定为<br>一个朔望月平均长度约为29.53天，这是一个平均值,有长有短；<br>太阴历：根据月相制定的；</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/">技术知识</a>
-                    
-                  </div>
                 
                 
               </div>
@@ -330,18 +289,12 @@ done
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2020/10/12/share_value_account/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">账户信息</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2020/10/10/note_write_md/">
-                        <span class="hidden-mobile">使用md写文章的感受</span>
+                      <a href="/2020/11/11/%E5%9F%9F%E5%90%8D-%E7%AB%AF%E5%8F%A3%E8%AE%BF%E9%97%AE%E9%97%A8%E6%88%B7/">
+                        <span class="hidden-mobile">域名+端口访问门户</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -360,8 +313,8 @@ done
     <div id="disqus_thread"></div>
     <script type="text/javascript">
       var disqus_config = function () {
-        this.page.url = 'http://example.com/2020/10/12/interactive_shell/';
-        this.page.identifier = '/2020/10/12/interactive_shell/';
+        this.page.url = 'http://example.com/2020/11/22/%E5%85%AC%E5%8E%86%E5%86%9C%E5%8E%86%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E7%9F%A5/';
+        this.page.identifier = '/2020/11/22/%E5%85%AC%E5%8E%86%E5%86%9C%E5%8E%86%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E7%9F%A5/';
       };
       function loadDisqus() {
         (function () {
@@ -540,7 +493,7 @@ done
     var typed = new Typed('#subtitle', {
       strings: [
         '  ',
-        "脚本模板化&nbsp;",
+        "公历农历的简单认知&nbsp;",
       ],
       cursorChar: "_",
       typeSpeed: 70,

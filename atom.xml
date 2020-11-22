@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-10-15T06:52:08.902Z</updated>
+  <updated>2020-11-22T14:35:57.325Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,21 +17,189 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>练手题目</title>
-    <link href="http://example.com/2020/10/15/%E6%89%93%E5%8D%B0%E7%BB%83%E4%B9%A0%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98/"/>
-    <id>http://example.com/2020/10/15/%E6%89%93%E5%8D%B0%E7%BB%83%E4%B9%A0%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98/</id>
-    <published>2020-10-15T06:52:08.906Z</published>
-    <updated>2020-10-15T06:52:08.902Z</updated>
+    <title>公历农历的简单认知</title>
+    <link href="http://example.com/2020/11/22/%E5%85%AC%E5%8E%86%E5%86%9C%E5%8E%86%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E7%9F%A5/"/>
+    <id>http://example.com/2020/11/22/%E5%85%AC%E5%8E%86%E5%86%9C%E5%8E%86%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A4%E7%9F%A5/</id>
+    <published>2020-11-22T13:42:00.000Z</published>
+    <updated>2020-11-22T14:35:57.325Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="打印练习格式控制出现的小问题"><a href="#打印练习格式控制出现的小问题" class="headerlink" title="打印练习格式控制出现的小问题"></a>打印练习格式控制出现的小问题</h3><p>偶然运行之前写的练手题目<br>！<a href="/img/strange_tri.jpg">img</a><br>由于占据格子的问题，当数据大于9的时候，会出现排版上的问题<br>好吧算是小问题，但是细看之下发现了另外一个大问题，第一行的1怎么不见了<br>特定加了个–&gt;指出来</p><p>分析代码唯一的区别，大于9的时候会执行</p><pre><code class="hljs c"><span class="hljs-keyword">if</span>(n&lt;<span class="hljs-number">0</span>||n&gt;<span class="hljs-number">9</span>)   &#123;       <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The num must between 1 to 9!&quot;</span>);   &#125;</code></pre><hr><h4 id="分析下产生的原因"><a href="#分析下产生的原因" class="headerlink" title="分析下产生的原因"></a>分析下产生的原因</h4><blockquote><p>在看到输出前已经有printf且没有换行之后，加上”\n”进行换行问题解决了</p></blockquote><h5 id="更深层次测原因"><a href="#更深层次测原因" class="headerlink" title="更深层次测原因"></a>更深层次测原因</h5><hr><p>格式控制.c</p><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pyramid</span><span class="hljs-params">( <span class="hljs-keyword">int</span> n )</span></span>;<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><span class="hljs-function"></span>&#123;    <span class="hljs-keyword">int</span> n;    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);    pyramid(n);    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;&#125;<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pyramid</span><span class="hljs-params">( <span class="hljs-keyword">int</span> n)</span></span><span class="hljs-function"></span>&#123;    <span class="hljs-keyword">int</span>  pos=<span class="hljs-number">0</span>;    <span class="hljs-keyword">int</span>  prenull=<span class="hljs-number">0</span>;    <span class="hljs-keyword">int</span>  num=<span class="hljs-number">0</span>;    <span class="hljs-keyword">if</span>(n&lt;<span class="hljs-number">0</span>||n&gt;<span class="hljs-number">9</span>)    &#123;        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The num must between 1 to 9!&quot;</span>);    &#125;    <span class="hljs-keyword">for</span>(pos=<span class="hljs-number">1</span>;pos&lt;n+<span class="hljs-number">1</span>;pos++)    &#123;        <span class="hljs-keyword">for</span>(prenull=<span class="hljs-number">1</span>;prenull&lt;=n-pos;prenull++)        &#123;            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);        &#125;        <span class="hljs-keyword">for</span>(num=<span class="hljs-number">1</span>;num&lt;=pos;num++)        &#123;            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,pos);        &#125;       <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);    &#125;&#125;</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;打印练习格式控制出现的小问题&quot;&gt;&lt;a href=&quot;#打印练习格式控制出现的小问题&quot; class=&quot;headerlink&quot; title=&quot;打印练习格式控制出现的小问题&quot;&gt;&lt;/a&gt;打印练习格式控制出现的小问题&lt;/h3&gt;&lt;p&gt;偶然运行之前写的练手题目&lt;br&gt;！&lt;a hr</summary>
-      
+    <content type="html"><![CDATA[<p>公历 农历 闰年 闰月</p><a id="more"></a><p>当前历法规则：</p><h3 id="公历（）："><a href="#公历（）：" class="headerlink" title="公历（）："></a>公历（）：</h3><p>1公历年=365~366天，<br><em>存在闰年，闰年分给哪些年：</em><br><img src="/images/cata%E9%97%B0%E5%B9%B4%E5%88%A4%E6%96%AD%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt="流程图"></p><p>产生的原因：<br>地球绕太阳运行周期为365天5小时48分46秒（合365.24219天）即一回归年，<br>原因：0.24219<em>4    =0.96876（天）   每四年进行一次修正，调整一：每四年需要加一天；<br>原因：0.24219</em>400=96.876    (天)      如果按照调整一，每四百年会产生100个闰年，有三天的误差需要修正；因此需要减少三个闰年。因此产生调整二：在调整一的基础上每400年需要减少三个闰年。所以100,200,300不是闰年。<br>个人推论：按4000年算：0.24219*400 = 968.76  ，<br>按照调整一和调整二：补充了970个闰年，因此4000年中得挑一个闰年将其除名，仅个人推论；<br>当然这是建立在一个回归年=365.24219天的基础上。</p><h3 id="农历"><a href="#农历" class="headerlink" title="农历"></a>农历</h3><p><strong>（有人称为阴历，其实是阴阳合历），符合月相的变化：</strong></p><p> 为了协调回归年与朔望月之间的天数，于是产生了阴阳历，即农历。方法是在历法中加入二十四节气以及“19年7闰”法（即在19个农历年中加上7个闰年。农历闰年多一个闰月，因此一年平均有383.8978天，而农历平年平均有354.3672天。</p><p><strong>农历</strong> ：如何确定一个农历年有多少天？<br>答：那得先明白一个农历月有多少天，和一个农历年有多少月。即确定农历月是如何定义的。先给出一个结论：一个农历月有29或者30天，一个农历年平年12个月，月亮绕地球12圈；一个农历闰年13个月，月亮绕地球13圈。19年中有7个闰年。</p><p><strong>农历月的定义</strong>：农历的一个月是定朔法确定的朔望月。月亮绕地球公转一周的时间。</p><p>朔日：    月球移到地球和太阳中间时的那一天叫朔日。将这天定为初一。  </p><p>朔望月：  月相完整变化的一个周期，平均29.53天。  </p><p>因为朔望月的存在，农历的月分为大月和小月，29天和30天</p><p>通过定朔法确定：南朝刘宋何承天撰元嘉历，主张废平朔而用定朔，也就是以日月黄经相等的时刻（月球移到地球和太阳中间）定为朔，以这天为朔日。以日月黄经相差一百八十度的时刻为望，以这天为望日。</p><h3 id="一个农历年有多少个月："><a href="#一个农历年有多少个月：" class="headerlink" title="一个农历年有多少个月："></a>一个农历年有多少个月：</h3><p> 答：平年12个月；闰年13个月，但是这些月的大小不固定，因为大小月是根据天文决定的，不是人为规定的。</p><p>个人计算：<br>   农历平年平均天数：29.5<em>12=354<br>   农历闰年平均天数：29.5</em>13=383.5</p><h3 id="为什么会有19年7闰的现象："><a href="#为什么会有19年7闰的现象：" class="headerlink" title="为什么会有19年7闰的现象："></a>为什么会有19年7闰的现象：</h3><pre><code class="hljs angelscript">(<span class="hljs-number">365</span><span class="hljs-number">-354</span>）* <span class="hljs-number">19</span> = <span class="hljs-number">209</span>       <span class="hljs-number">29.5</span> * <span class="hljs-number">7</span>  = <span class="hljs-number">206.5</span><span class="hljs-number">365</span> * <span class="hljs-number">19</span> = <span class="hljs-number">6935</span><span class="hljs-number">354</span> * <span class="hljs-number">12</span> + <span class="hljs-number">383.5</span> * <span class="hljs-number">7</span> = <span class="hljs-number">6932.5</span>个人结论：是寻找<span class="hljs-number">11</span>和<span class="hljs-number">29.5</span>的最小公倍数。</code></pre><h3 id="如何确定农历闰年"><a href="#如何确定农历闰年" class="headerlink" title="如何确定农历闰年"></a>如何确定农历闰年</h3><p><code>19年中哪7年是闰年，以及闰月是哪个月?</code></p><p>答： 由节气决定，如果从某个十一月开始到下一个十一月（不含）之间有13个 农历月，则取其中最先出现的一个不包含中气的农历月为闰月。这个刚开始看也是懵的。原因是十一月是人为定义的：冬至所在的农历月为十一月。通过与节气联系，不让月份与季节偏差太大。</p><h3 id="关于二十四节气的定义："><a href="#关于二十四节气的定义：" class="headerlink" title="关于二十四节气的定义："></a>关于二十四节气的定义：</h3><pre><code class="hljs plain">节气：奇数序号为节令；偶数序号为中气；十二节令：立春、惊蛰、清明、立夏、芒种、小暑、立秋、白露、寒露、立冬、大雪、小寒。十二中气：雨水、春分、谷雨、小满、夏至、大暑、处暑、秋分、霜降、小雪、冬至、大寒。</code></pre><p><strong>定气法</strong>： 太阳从黄经零度起，沿黄经每运行15度所经历的时日称为一个节气。每年运行360度，共经历24个节气。  </p><p>春分   太阳过黄经零度，太阳光直射赤道，地球上的昼夜时间相等，所以春分秋分又称为“日夜分”。<br>夏至：太阳过黄经九十度为夏至。夏至当天太阳直射北回归线，<br>秋分：太阳过黄经一百八十度。<br>冬至： 太阳经黄经二百七十度。</p><p>通过**<em>定气法**</em> 确定的节气，间隔在14-16天。一个完整的二十四节气与一个回归年的时间相差很小，<br>而且节气是与太阳的位置联系的，对季节的联系很精确，对指导农业活动的意义比较大。</p><pre><code class="hljs angelscript">总结：公历：通过每年的天数<span class="hljs-number">365</span>~<span class="hljs-number">366</span>变化，来拟合一个回归年<span class="hljs-number">365.24219</span>天；农历：反映月相的变化，并且结合回归年的大小；二十四节气： 太阳在黄道上的位置，一个完整的二十四节气周期对应一个回归年；不过感觉无论是定义初一和节气得依靠观测天文，历法的精确度与观测天文的能力有关。</code></pre><h3 id="附加知识"><a href="#附加知识" class="headerlink" title="附加知识"></a>附加知识</h3><blockquote><p>在1645年以前，农历使用平气注历，各月之后出现闰月的概率相等。之后使用定气注历，各月出现闰月的概率变为不相等。</p></blockquote><blockquote><p>目前的公历称为格里高利历，在这之前使用的是儒略历：一年365天，每四年加一闰日，即平均一年365．25日。这样一年的平均长度为365.25天，比地球绕日旋转的回归年365.2422天多0.0078天，到了公元1582年，积累的差值达到了10天左右——也就是说这时日历上的6月22日，与地球真正的夏至日差了十天，再往后积累，也许会出现夏至日下雪的情况了。为消除这个差数（罗马教皇格里高利十三世进行历法改革），把1582年10月4日的下一日定为10月15日，并采用400年制97个闰日的法则，整百年只有被400除尽的才为闰年，称为格里高利历。这样历年的平均长度为365.2425日，误差为0.0003天，要3300多年才与回归年长度差一天。</p></blockquote><p>已有规则：19年7闰；<br>29.53（29.530588）天；<br>汉代的《太初历》把此一数据定为<br>一个朔望月平均长度约为29.53天，这是一个平均值,有长有短；<br>太阴历：根据月相制定的；</p>]]></content>
     
     
+    <summary type="html">&lt;p&gt;公历 农历 闰年 闰月&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>域名+端口访问门户</title>
+    <link href="http://example.com/2020/11/11/%E5%9F%9F%E5%90%8D-%E7%AB%AF%E5%8F%A3%E8%AE%BF%E9%97%AE%E9%97%A8%E6%88%B7/"/>
+    <id>http://example.com/2020/11/11/%E5%9F%9F%E5%90%8D-%E7%AB%AF%E5%8F%A3%E8%AE%BF%E9%97%AE%E9%97%A8%E6%88%B7/</id>
+    <published>2020-11-11T06:41:00.000Z</published>
+    <updated>2020-11-11T06:46:09.437Z</updated>
+    
+    <content type="html"><![CDATA[<p>摘要  门户网站</p><a id="more"></a><p><a href="http://guoyanping.xin:1050/index.php?user/login">可道云</a></p><p><a href="http://guoyanping.xin:1111/">Tomcat</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;摘要  门户网站&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="博客相关" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>运动笔记</title>
+    <link href="http://example.com/2020/11/10/%E8%BF%90%E5%8A%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>http://example.com/2020/11/10/%E8%BF%90%E5%8A%A8%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-11-10T12:52:00.000Z</published>
+    <updated>2020-11-10T13:09:52.190Z</updated>
+    
+    <content type="html"><![CDATA[<p>摘要</p><a id="more"></a><hr><h4 id="运动损伤"><a href="#运动损伤" class="headerlink" title="运动损伤"></a>运动损伤</h4><blockquote><blockquote><blockquote><p>由于不恰当的锻炼方式，强求自己做引体向上，早上发现肱桡肌[gōng ráo jī]<br><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1605023718220&di=a145b94ac7f31dc1277f2acab7496fa2&imgtype=0&src=http://mmbiz.qpic.cn/mmbiz/RI0HCv7B0Lgqh6emAP3284WZVFvqGfCMdicjANLjKZ0lbJJZEZNZA4crnFzMHtHDng9vCkgwecGVcVe3HpfUtXQ/0?wx_fmt=png" alt="手臂肌肉"></p></blockquote></blockquote></blockquote>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;摘要&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="http://example.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>使用FileGator</title>
+    <link href="http://example.com/2020/11/10/%E4%BD%BF%E7%94%A8FileGator/"/>
+    <id>http://example.com/2020/11/10/%E4%BD%BF%E7%94%A8FileGator/</id>
+    <published>2020-11-10T11:15:00.000Z</published>
+    <updated>2020-11-11T06:40:18.916Z</updated>
+    
+    <content type="html"><![CDATA[<p>摘要： 容器  FileGator</p><a id="more"></a><p>想做一个网页版的文件共享，<br><br>在知乎上看了关于网盘的方案，选择了fileGator这个实现方案,官网的部署还挺简洁，不过我怕破坏了云服务器的稳定性，还是选择容器。而且 docker search 还查找到了别人上传到dockerhub上做好的filegator镜像，当然也可以拉取基础的ubuntu镜像，照着filegator的官网指南操作，不过我操作失败了，原因还未知。这里就仅介绍直接使用现成的镜像吧，毕竟偷懒。</p><pre><code class="hljs excel">拉取镜像docker <span class="hljs-built_in">search</span> filegator</code></pre><p><br>选取的第一个，因为下载量都很低，索性选择第一个。</p><pre><code class="hljs elixir">创建容器docker run -itd --name file -p <span class="hljs-number">1060:80</span> -p <span class="hljs-number">1061:8080</span> -v /nfs_ali/<span class="hljs-symbol">:/var/www/html/demorepo/nfs</span> causefx/filegator</code></pre><blockquote><blockquote><blockquote><p>映射这两个端口应该够了，也没啥指导手册</p></blockquote></blockquote></blockquote><p>进入容器</p><pre><code class="hljs gradle">docker exec -it <span class="hljs-keyword">file</span> <span class="hljs-regexp">/bin/</span>bash</code></pre><p>更改一些设置，因为制作者使用了自己的一些密码；在该目录下执行</p><pre><code class="hljs elixir">root<span class="hljs-variable">@c</span><span class="hljs-symbol">:/var/www/html/filegator/private</span><span class="hljs-comment"># cp users.json.blank  users.json</span></code></pre><p>默认密码就会变成 admin/admin123  <a href="https://docs.filegator.io/accounts.html">官网文档</a>说的<br><br><br>然后访问ip:1061即可访问<br>这里放下我自己制作的<br><a href="http://guoyanping.xin:1061/">个人下载站</a></p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;摘要： 容器  FileGator&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术知识" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>人性的弱点</title>
+    <link href="http://example.com/2020/11/09/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/"/>
+    <id>http://example.com/2020/11/09/%E4%BA%BA%E6%80%A7%E7%9A%84%E5%BC%B1%E7%82%B9/</id>
+    <published>2020-11-09T02:43:00.000Z</published>
+    <updated>2020-11-10T08:09:18.643Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>摘要</strong> 人性的弱点</p><a id="more"></a><h5 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h5><blockquote><blockquote><blockquote><p>之前B站上的消费主义的警示，评论里面有关于《人性的弱点》这本书的推荐，鉴于最近不是很想购买纸质书籍，主要出于携带不方便的考虑，而且之前囤的那批纸质书的还没有阅读完，造成一种书籍的积压，也不符合断舍离的主旨。</p></blockquote></blockquote></blockquote><p><strong>听闻使用思维导图的方式阅读书籍可以提升阅读的效率</strong></p><pre><code class="hljs mermaid">graph summary;1[目标主题]2[直接使用]3[激励自己]</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;strong&gt;摘要&lt;/strong&gt; 人性的弱点&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="读书笔记" scheme="http://example.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于听音乐的一些想法</title>
+    <link href="http://example.com/2020/10/25/%E5%85%B3%E4%BA%8E%E5%90%AC%E9%9F%B3%E4%B9%90%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/"/>
+    <id>http://example.com/2020/10/25/%E5%85%B3%E4%BA%8E%E5%90%AC%E9%9F%B3%E4%B9%90%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/</id>
+    <published>2020-10-25T07:26:00.000Z</published>
+    <updated>2020-11-10T08:21:12.260Z</updated>
+    
+    <content type="html"><![CDATA[<p>摘要：音乐的作用</p><a id="more"></a><p>&amp;nbsp 虽说看视频才是吸引力极大的选项，因为视频的信息量更加丰富；<br><br>不过音乐才是能够润物细无声，音乐并不会夺走思考时候的注意力；<br>而且音乐能够影响人的心情<br><br>建议行成自己的歌单，</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;摘要：音乐的作用&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="http://example.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>c 输入对末尾结束是否空格</title>
+    <link href="http://example.com/2020/10/21/c-%E8%BE%93%E5%85%A5%E5%AF%B9%E6%9C%AB%E5%B0%BE%E7%BB%93%E6%9D%9F%E6%98%AF%E5%90%A6%E7%A9%BA%E6%A0%BC/"/>
+    <id>http://example.com/2020/10/21/c-%E8%BE%93%E5%85%A5%E5%AF%B9%E6%9C%AB%E5%B0%BE%E7%BB%93%E6%9D%9F%E6%98%AF%E5%90%A6%E7%A9%BA%E6%A0%BC/</id>
+    <published>2020-10-21T07:14:00.000Z</published>
+    <updated>2020-11-10T08:20:43.776Z</updated>
+    
+    <content type="html"><![CDATA[<p>c 输入对末尾结束是否空格</p><a id="more"></a><p>在编写命令行的处理程序的时候，在调试的时候发现一个可能算作bug的问题，部分命令要在输入完命令之后再使用空格然后按回车。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;c 输入对末尾结束是否空格&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术知识" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于ssh使用的总结</title>
+    <link href="http://example.com/2020/10/20/%E5%85%B3%E4%BA%8Essh%E4%BD%BF%E7%94%A8%E7%9A%84%E6%80%BB%E7%BB%93/"/>
+    <id>http://example.com/2020/10/20/%E5%85%B3%E4%BA%8Essh%E4%BD%BF%E7%94%A8%E7%9A%84%E6%80%BB%E7%BB%93/</id>
+    <published>2020-10-20T02:32:00.000Z</published>
+    <updated>2020-11-10T08:11:26.065Z</updated>
+    
+    <content type="html"><![CDATA[<p>ssh</p><a id="more"></a><p>使用Linux一般都是通过<font color=red size=5>xhsell</font>连接，<br>购置了一台N1的盒子，但是由于openwrt平台不熟悉，一些常用软件没有找到，不过好在openwrt可以使用docker,因此还是可以使用centos和ubuntude </p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;ssh&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术知识" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>c打印控制Debug</title>
+    <link href="http://example.com/2020/10/19/%E6%89%93%E5%8D%B0%E7%BB%83%E4%B9%A0%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98/"/>
+    <id>http://example.com/2020/10/19/%E6%89%93%E5%8D%B0%E7%BB%83%E4%B9%A0%E6%A0%BC%E5%BC%8F%E6%8E%A7%E5%88%B6%E5%87%BA%E7%8E%B0%E7%9A%84%E5%B0%8F%E9%97%AE%E9%A2%98/</id>
+    <published>2020-10-19T09:37:00.000Z</published>
+    <updated>2020-11-10T08:13:47.455Z</updated>
+    
+    <content type="html"><![CDATA[<p>调试信息</p><a id="more"></a><h3 id="打印练习格式控制出现的小问题"><a href="#打印练习格式控制出现的小问题" class="headerlink" title="打印练习格式控制出现的小问题"></a>打印练习格式控制出现的小问题</h3><p>偶然运行之前写的练手题目<br><img src="/img/strange_tri.jpg" alt="a"></p><blockquote><p>由于占据格子的问题，当数据大于9的时候，会出现排版上的问题<br>好吧算是小问题，但是细看之下发现了另外一个大问题，第一行的1怎么不见了(特地加了个–&gt;指出来)</p></blockquote><p>分析代码唯一的区别，大于9的时候会执行</p><pre><code class="hljs c"><span class="hljs-keyword">if</span>(n&lt;<span class="hljs-number">0</span>||n&gt;<span class="hljs-number">9</span>)   &#123;       <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The num must between 1 to 9!&quot;</span>);   &#125;</code></pre><hr><h4 id="分析下产生的原因"><a href="#分析下产生的原因" class="headerlink" title="分析下产生的原因"></a>分析下产生的原因</h4><blockquote><p>在看到输出前已经有printf且没有换行之后，加上”\n”进行换行问题解决了</p></blockquote><h5 id="更深层次测原因"><a href="#更深层次测原因" class="headerlink" title="更深层次测原因"></a>更深层次测原因</h5><hr><p>格式控制.c</p><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pyramid</span><span class="hljs-params">( <span class="hljs-keyword">int</span> n )</span></span>;<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><span class="hljs-function"></span>&#123;    <span class="hljs-keyword">int</span> n;    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;n);    pyramid(n);    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;&#125;<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pyramid</span><span class="hljs-params">( <span class="hljs-keyword">int</span> n)</span></span><span class="hljs-function"></span>&#123;    <span class="hljs-keyword">int</span>  pos=<span class="hljs-number">0</span>;    <span class="hljs-keyword">int</span>  prenull=<span class="hljs-number">0</span>;    <span class="hljs-keyword">int</span>  num=<span class="hljs-number">0</span>;    <span class="hljs-keyword">if</span>(n&lt;<span class="hljs-number">0</span>||n&gt;<span class="hljs-number">9</span>)    &#123;        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;The num must between 1 to 9!&quot;</span>);    &#125;    <span class="hljs-keyword">for</span>(pos=<span class="hljs-number">1</span>;pos&lt;n+<span class="hljs-number">1</span>;pos++)    &#123;        <span class="hljs-keyword">for</span>(prenull=<span class="hljs-number">1</span>;prenull&lt;=n-pos;prenull++)        &#123;            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot; &quot;</span>);        &#125;        <span class="hljs-keyword">for</span>(num=<span class="hljs-number">1</span>;num&lt;=pos;num++)        &#123;            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>,pos);        &#125;       <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);    &#125;&#125;</code></pre>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;调试信息&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="技术知识" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>笔记分类的感受</title>
+    <link href="http://example.com/2020/10/18/%E8%A2%AB%E7%AC%94%E8%AE%B0%E5%88%86%E7%B1%BB%E6%8A%98%E7%A3%A8%E7%96%AF%E4%BA%86/"/>
+    <id>http://example.com/2020/10/18/%E8%A2%AB%E7%AC%94%E8%AE%B0%E5%88%86%E7%B1%BB%E6%8A%98%E7%A3%A8%E7%96%AF%E4%BA%86/</id>
+    <published>2020-10-18T01:38:00.000Z</published>
+    <updated>2020-11-10T08:18:52.573Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>最近被笔记分类折磨哭了</strong></p><a id="more"></a><blockquote><p>由于笔记内容大多会存在交叉的问题；<br>而在有道云笔记中使用的是文件夹分层原则，部分文章可以同时属于两个小类别，<br>也许是分类维度不清晰导致的？</p></blockquote><hr><p>而且不同的笔记下分类原则肯定不相同；</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;&lt;strong&gt;最近被笔记分类折磨哭了&lt;/strong&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="随笔" scheme="http://example.com/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
   </entry>
@@ -41,7 +209,7 @@
     <link href="http://example.com/2020/10/13/%E6%B5%8B%E8%AF%95%E5%A4%9A%E6%A0%87%E7%AD%BE%E4%BB%A5%E5%8F%8A%E5%88%86%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>http://example.com/2020/10/13/%E6%B5%8B%E8%AF%95%E5%A4%9A%E6%A0%87%E7%AD%BE%E4%BB%A5%E5%8F%8A%E5%88%86%E7%B1%BB%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
     <published>2020-10-13T02:55:00.000Z</published>
-    <updated>2020-10-13T02:56:42.039Z</updated>
+    <updated>2020-11-10T08:12:05.740Z</updated>
     
     <content type="html"><![CDATA[<ul><li>总得写点东西</li><li>控制的字符似乎得用英文</li><li>凑够三行</li></ul>]]></content>
     
@@ -60,16 +228,6 @@
     
     <category term="技术知识" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/"/>
     
-    <category term="测试" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/%E6%B5%8B%E8%AF%95/"/>
-    
-    
-    <category term="1" scheme="http://example.com/tags/1/"/>
-    
-    <category term="2" scheme="http://example.com/tags/2/"/>
-    
-    <category term="3" scheme="http://example.com/tags/3/"/>
-    
-    <category term="4" scheme="http://example.com/tags/4/"/>
     
   </entry>
   
@@ -78,17 +236,17 @@
     <link href="http://example.com/2020/10/13/echarts/"/>
     <id>http://example.com/2020/10/13/echarts/</id>
     <published>2020-10-13T00:00:00.000Z</published>
-    <updated>2020-10-13T02:48:41.097Z</updated>
+    <updated>2020-11-10T08:17:41.923Z</updated>
     
-    <content type="html"><![CDATA[<p>Echart和iframe的使用</p><a id="more"></a><script src="https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.min.js"></script><script src="https://cdn.jsdelivr.net/npm/echarts-gl@1.1.1/dist/echarts-gl.min.js"></script><hr><script src="https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.min.js"></script><!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --><div id="main" style="width: 600px;height:400px;"></div><script type="text/javascript">  // 基于准备好的dom，初始化echarts实例  var myChart = echarts.init(document.getElementById('main'));  // 指定图表的配置项和数据  var option = {    xAxis: {        type: 'category',        boundaryGap: false    },    yAxis: {        type: 'value',        boundaryGap: [0, '30%']    },    visualMap: {        type: 'piecewise',        show: false,        dimension: 0,        seriesIndex: 0,        pieces: [{            gt: 1,            lt: 3,            color: 'rgba(0, 180, 0, 0.5)'        }, {            gt: 5,            lt: 7,            color: 'rgba(0, 180, 0, 0.5)'        }]    },    series: [        {            type: 'line',            smooth: 0.6,            symbol: 'none',            lineStyle: {                color: 'green',                width: 5            },            markLine: {                symbol: ['none', 'none'],                label: {show: false},                data: [                    {xAxis: 1},                    {xAxis: 3},                    {xAxis: 5},                    {xAxis: 7}                ]            },            areaStyle: {},            data: [                ['2019-10-10', 200],                ['2019-10-11', 400],                ['2019-10-12', 650],                ['2019-10-13', 500],                ['2019-10-14', 250],                ['2019-10-15', 300],                ['2019-10-16', 450],                ['2019-10-17', 300],                ['2019-10-18', 100]            ]        }    ]};  // 使用刚指定的配置项和数据显示图表。  myChart.setOption(option);  // 刷新调整  window.onresize = function () {    myChart.resize();  }</script><iframe src="http://www.baidu.com/" width="100%" height="500" name="topFrame" scrolling="yes"  noresize="noresize" frameborder="0" id="topFrame"></iframe>]]></content>
+    <content type="html"><![CDATA[<p>Echart和iframe的使用</p><a id="more"></a><script src="https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.min.js"></script><script src="https://cdn.jsdelivr.net/npm/echarts-gl@1.1.1/dist/echarts-gl.min.js"></script><hr><script src="https://cdn.jsdelivr.net/npm/echarts@4.8.0/dist/echarts.min.js"></script><!-- 为 ECharts 准备一个具备大小（宽高）的 DOM --><div id="main" style="width: 600px;height:400px;"></div><script type="text/javascript">  // 基于准备好的dom，初始化echarts实例  var myChart = echarts.init(document.getElementById('main'));  // 指定图表的配置项和数据  var option = {    xAxis: {        type: 'category',        boundaryGap: false    },    yAxis: {        type: 'value',        boundaryGap: [0, '30%']    },    visualMap: {        type: 'piecewise',        show: false,        dimension: 0,        seriesIndex: 0,        pieces: [{            gt: 1,            lt: 3,            color: 'rgba(0, 180, 0, 0.5)'        }, {            gt: 5,            lt: 7,            color: 'rgba(0, 180, 0, 0.5)'        }]    },    series: [        {            type: 'line',            smooth: 0.6,            symbol: 'none',            lineStyle: {                color: 'green',                width: 5            },            markLine: {                symbol: ['none', 'none'],                label: {show: false},                data: [                    {xAxis: 1},                    {xAxis: 3},                    {xAxis: 5},                    {xAxis: 7}                ]            },            areaStyle: {},            data: [                ['2019-10-10', 200],                ['2019-10-11', 400],                ['2019-10-12', 650],                ['2019-10-13', 500],                ['2019-10-14', 250],                ['2019-10-15', 300],                ['2019-10-16', 450],                ['2019-10-17', 300],                ['2019-10-18', 100]            ]        }    ]};  // 使用刚指定的配置项和数据显示图表。  myChart.setOption(option);  // 刷新调整  window.onresize = function () {    myChart.resize();  }</script><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=450 src="//music.163.com/outchain/player?type=0&id=5051447966&auto=1&height=430"></iframe><iframe src="http://www.baidu.com/" width="100%" height="500" name="topFrame" scrolling="yes"  noresize="noresize" frameborder="0" id="topFrame"></iframe>]]></content>
     
     
     <summary type="html">&lt;p&gt;Echart和iframe的使用&lt;/p&gt;</summary>
     
     
     
+    <category term="博客相关" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/"/>
     
-    <category term="随笔" scheme="http://example.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -96,15 +254,17 @@
     <title>账户信息</title>
     <link href="http://example.com/2020/10/12/share_value_account/"/>
     <id>http://example.com/2020/10/12/share_value_account/</id>
-    <published>2020-10-12T19:35:35.000Z</published>
-    <updated>2020-10-14T06:33:28.487Z</updated>
+    <published>2020-10-12T19:35:00.000Z</published>
+    <updated>2020-11-10T08:14:26.213Z</updated>
     
-    <content type="html"><![CDATA[<div id="hexo-blog-encrypt" data-wpm="密码错误" data-whm="密码错误">  <div class="hbe-input-container">  <input type="password" id="hbePass" placeholder="" />    <label for="hbePass">输入密码获取信息</label>    <div class="bottom-line"></div>  </div>  <script id="hbeData" type="hbeData" data-hmacdigest="b60abf7f07b99212f582f7d1cf093128dec795279d65ea7ddae7ce87f90ad7f2">4c68daf962b8f3ccfbe4a8a76437cfc08ad531fb6e8bcb92018b62fd47bb6af078992c5f688dcab9c2e31d4882f0331ba8608eb8e3172edc362f0c604f4d2ab936814ac62003b804a84c3d89c1af4074847260bdfabb830ec2b9bc809b55aa20ec756d1c6ce1fd2c91ed09a1ef85e24dc248f6370f63af0e40bd7fb146f9036a66332c996b4391a66edaec298f87d306c3862f4116e493191da014d3d3349003963f5fc9629d4407a74aced8a2147439dbc76c398771574d4efea3bb6d0934c47fb724b15d7819d7bad3026dc392088830fb3996c68fd4c669e4c2c49f0685f626df64c4828b8e598c82275be1caf13a9137cac1749e64020a7ecf02b20a72082835c032c726c67b108d9d7ca2168dad7bae80524d0df2f6bedaf91099916470</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    <content type="html"><![CDATA[<div id="hexo-blog-encrypt" data-wpm="密码错误" data-whm="密码错误">  <div class="hbe-input-container">  <input type="password" id="hbePass" placeholder="" />    <label for="hbePass">输入密码获取信息</label>    <div class="bottom-line"></div>  </div>  <script id="hbeData" type="hbeData" data-hmacdigest="1279a6e784ded01c6de896cca80901ba3aada4cf56760b7255238d203a23daed">4c68daf962b8f3ccfbe4a8a76437cfc08ad531fb6e8bcb92018b62fd47bb6af078992c5f688dcab9c2e31d4882f0331ba8608eb8e3172edc362f0c604f4d2ab936814ac62003b804a84c3d89c1af4074847260bdfabb830ec2b9bc809b55aa20ec756d1c6ce1fd2c91ed09a1ef85e24dc248f6370f63af0e40bd7fb146f9036a66332c996b4391a66edaec298f87d306c3862f4116e493191da014d3d3349003963f5fc9629d4407a74aced8a2147439dbc76c398771574d4efea3bb6d0934c47fb724b15d7819d7bad3026dc392088830fb3996c68fd4c669e4c2c49f0685f626df64c4828b8e598c82275be1caf13a9137cac1749e64020a7ecf02b20a72082835c032c726c67b108d9d7ca2168dad33c295b13bbbeae6bd02d21bf4cb0eade6fd273976a42d0129273a84a62978b649860c8f580fdfa08da0c7668839fbe5948f7fff95f8da031e032beae60ba63faf11748c02a280fdba1313a5b70ea1bf36835ed9b61a7088c8447f8c2c8f5b42aab587b92c0e7a5b8c7c5f05a35e92117dc9e397d7bbc534ba001b8e943e58ab3cad1388eea8d48a804a354527fb6aa03489da5e4e7f874f6f40c4ffc6cb4ee36ceea13547aafc71306609c656a0406fa22d018efe2e8eee47159f92a855f12253eab45f82b9c88969510fccadc61cd20ac14e2b333b6b4e6326f1a33907acc26e01f70a30b859a68d182521fa16f65f644b9699ff0e923dfd015fe9d7c6b0d16ed2d3caca0c7b950550f472914f384eb14d2b7df0c0de2f3d72164450ba389e</script></div><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
     
     
     <summary type="html">请看第一条</summary>
     
     
+    
+    <category term="博客相关" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/"/>
     
     
   </entry>
@@ -113,8 +273,8 @@
     <title>脚本模板化</title>
     <link href="http://example.com/2020/10/12/interactive_shell/"/>
     <id>http://example.com/2020/10/12/interactive_shell/</id>
-    <published>2020-10-12T11:18:37.000Z</published>
-    <updated>2020-10-13T03:07:38.897Z</updated>
+    <published>2020-10-12T11:18:00.000Z</published>
+    <updated>2020-11-10T08:15:13.446Z</updated>
     
     <content type="html"><![CDATA[<p>shell脚本demo</p><a id="more"></a><p><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" alt="image"></p><blockquote><ul><li>解决需要将某些步骤的脚本重复粘贴到shell中执行</li><li>一些操作是有步骤的并且都是可以用命令执行的</li><li>不用翻笔记然后复制粘贴脚本执行</li></ul></blockquote><h5 id="脚本demo"><a href="#脚本demo" class="headerlink" title="脚本demo"></a>脚本demo</h5><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">!/bin/bash</span>stty erase &#x27;^H&#x27;function_title ()&#123;echo &quot;<span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#磁带库操作命令集成脚本　       —author guoyanping  </span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#选择底下的操作序号</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#***基础环境设置</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># １、setenforce 0              ## 关闭 selinux</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ２、service iptables stop     ##关闭防火墙</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ３、service mhvtl start       ##启动磁带库软件，这样 lscssi -g 才能显示那些磁带</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ４、service tgtd  start</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#***配置磁带库</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ５、lsscsi -g                 ## 显示虚拟磁带库中的对应的磁盘符号便于编辑tgt共享设置</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ６、vi /etc/tgt/targets.conf  ##修改配置文件</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ７、service tgtd reload       ## 修改配置文件是否成功完全看这个，stop，start  无法替代。</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ８、tgtadm --lld iscsi --mode target --op show  ## tgtd 与mhvtl合作 将target共享出去。</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment">#***使用帮助</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># ０、看下这个操作栏</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># -1、退出</span></span><span class="hljs-meta">#</span><span class="bash"><span class="hljs-comment"># 也可直接输入你想执行的命令 </span></span>&quot;&#125;function_titlewhile truedoread  -p &quot;输入需要进行的操作:&quot; choicecase $choice in1)setenforce 0         getenforce;;2)service iptables stop  ;;3)service mhvtl start ;;4)service tgtd  start ;;5)lsscsi -g ;;6)vi /etc/tgt/targets.conf;;7)service tgtd reload ;;8)tgtadm --lld iscsi --mode target --op show;;    0)    function_title    ;;-1)exit;;*)<span class="hljs-meta">$</span><span class="bash">choice</span>;;esacdone</code></pre>]]></content>
     
@@ -123,33 +283,27 @@
     
     
     
-    <category term="Demo" scheme="http://example.com/categories/Demo/"/>
+    <category term="技术知识" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/"/>
     
-    
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
-    
-    <category term="Shell" scheme="http://example.com/tags/Shell/"/>
-    
-    <category term="Demo" scheme="http://example.com/tags/Demo/"/>
     
   </entry>
   
   <entry>
-    <title>1号笔记</title>
+    <title>使用md写文章的感受</title>
     <link href="http://example.com/2020/10/10/note_write_md/"/>
     <id>http://example.com/2020/10/10/note_write_md/</id>
     <published>2020-10-10T15:29:00.000Z</published>
-    <updated>2020-10-13T02:46:49.823Z</updated>
+    <updated>2020-11-10T08:19:58.258Z</updated>
     
-    <content type="html"><![CDATA[<p>使用md的感受</p><a id="more"></a><blockquote><p>用引用的方式写正文应该可以提升下阅读的体验</p></blockquote><p>事实证明vi也可以用来写md,所以md软件的作用大概是体现所见即所得，</p><p>处于练手期的同学使用的</p>]]></content>
+    <content type="html"><![CDATA[<p>使用md的感受</p><a id="more"></a><blockquote><p>用引用的方式写正文应该可以提升下阅读的体验</p></blockquote><p>事实证明vi也可以用来写md,所以md软件的作用大概是体现所见即所得；</p><p>处于练手期的同学使用的，</p><p>md文件对我的作用在于能够控制，写出的博客的样式；</p>]]></content>
     
     
     <summary type="html">&lt;p&gt;使用md的感受&lt;/p&gt;</summary>
     
     
     
+    <category term="随笔" scheme="http://example.com/categories/%E9%9A%8F%E7%AC%94/"/>
     
-    <category term="随笔" scheme="http://example.com/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
@@ -157,8 +311,8 @@
     <title>solaris</title>
     <link href="http://example.com/2020/10/10/solaris/"/>
     <id>http://example.com/2020/10/10/solaris/</id>
-    <published>2020-10-10T06:13:48.000Z</published>
-    <updated>2020-10-13T02:44:32.579Z</updated>
+    <published>2020-10-10T06:13:00.000Z</published>
+    <updated>2020-11-10T08:12:51.340Z</updated>
     
     <content type="html"><![CDATA[<p>Solaris  OpenIndian相关介绍</p><a id="more"></a><pre><code class="hljs mermaid">graph LROpenSolaris--&gt;illumos</code></pre><blockquote><p><em>OpenSolaris闭源产生了illumos</em></p></blockquote><h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://pic2.zhimg.com/80/v2-743d5d236933938d8310b68e7ef7023d_720w.jpg?source=1940ef5c" alt="image"></h2><p><strong>illumos的特性</strong></p><ul><li>zfs</li><li>zone 轻量级虚拟机  LXC</li><li>crossbow 网络虚拟化</li><li>Dtrace 系统管理员的武器，macos 上的instruments</li><li>kvm type2虚拟化技术</li></ul><hr><p><strong>内核</strong></p><blockquote><p>于是illumos = ZFS + Zone + Crossbow + Dtrace + KVM。所有云计算的关键服务在这里集合，形成了一个为云计算而生的系统内核。</p></blockquote><hr><pre><code class="hljs mermaid">graph LRillumos--&gt;openindianillumos--&gt;smartos</code></pre><p><em>smartos的运维管理系统smartDataCenter</em></p><hr>]]></content>
     
@@ -166,6 +320,8 @@
     <summary type="html">&lt;p&gt;Solaris  OpenIndian相关介绍&lt;/p&gt;</summary>
     
     
+    
+    <category term="技术知识" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/"/>
     
     
   </entry>
@@ -175,17 +331,17 @@
     <link href="http://example.com/2020/10/10/mermaid/"/>
     <id>http://example.com/2020/10/10/mermaid/</id>
     <published>2020-10-10T00:00:00.000Z</published>
-    <updated>2020-10-13T02:48:28.903Z</updated>
+    <updated>2020-11-10T08:19:11.149Z</updated>
     
-    <content type="html"><![CDATA[<p>这里是摘要</p><a id="more"></a><h3 id="练习在markdown中使用mermaid"><a href="#练习在markdown中使用mermaid" class="headerlink" title="练习在markdown中使用mermaid"></a>练习在markdown中使用mermaid</h3><hr><h4 id="一、基础图形与基础与基础形状"><a href="#一、基础图形与基础与基础形状" class="headerlink" title="一、基础图形与基础与基础形状"></a>一、基础图形与基础与基础形状</h4><pre><code class="hljs angelscript">graph TD;<span class="hljs-number">11</span>[直角矩形]<span class="hljs-number">22</span>(圆角矩形)<span class="hljs-number">33</span>((圆形))<span class="hljs-number">44</span>&#123;棱形&#125;<span class="hljs-number">55</span>&gt;奇怪的形状]<span class="hljs-number">1</span>(起始位置)id2(准备材料)id3(操作流程)id4(收尾工作)<span class="hljs-number">1</span> --&gt; id2<span class="hljs-number">1</span> ==&gt; id3<span class="hljs-number">1</span> -.-&gt; id4</code></pre><pre><code class="hljs mermaid">graph TD;11[直角矩形]22(圆角矩形)33((圆形))44&#123;棱形&#125;55&gt;奇怪的形状]1(起始位置)id2(准备材料)id3(操作流程)id4(收尾工作)1 --&gt; id21 &#x3D;&#x3D;&gt; id31 -.-&gt; id4</code></pre><hr><h4 id="二、稍微复杂的图形"><a href="#二、稍微复杂的图形" class="headerlink" title="二、稍微复杂的图形"></a>二、稍微复杂的图形</h4><pre><code class="hljs erlang-repl">sequenceDiagramA-&gt;&gt;B: How are you?B-&gt;&gt;A: Great!</code></pre><pre><code class="hljs mermaid">sequenceDiagramA-&gt;&gt;B: How are you?B-&gt;&gt;A: Great!</code></pre><hr><h4 id="三、子图（还没搞明白）"><a href="#三、子图（还没搞明白）" class="headerlink" title="三、子图（还没搞明白）"></a>三、子图（还没搞明白）</h4><pre><code class="hljs armasm"><span class="hljs-symbol">graph</span> TB        subgraph one    <span class="hljs-built_in">a1</span>    <span class="hljs-built_in">a2</span>    <span class="hljs-meta">end</span>    subgraph two    b1--&gt;b2    <span class="hljs-meta">end</span>    subgraph three    <span class="hljs-built_in">c1</span>--&gt;<span class="hljs-built_in">c2</span>    <span class="hljs-meta">end</span></code></pre><pre><code class="hljs mermaid">graph TB        subgraph one    a1    a2    end    subgraph two    b1--&gt;b2    end    subgraph three    c1--&gt;c2    end</code></pre><hr><h4 id="四、花里胡哨的样式"><a href="#四、花里胡哨的样式" class="headerlink" title="四、花里胡哨的样式"></a>四、花里胡哨的样式</h4><p>(控制格子的样式)</p><pre><code class="hljs apache"><span class="hljs-attribute">graph</span> LR    <span class="hljs-attribute">id1</span>(Start)--&gt;id<span class="hljs-number">2</span>(Stop)    <span class="hljs-attribute">style</span> id<span class="hljs-number">1</span> fill:#f<span class="hljs-number">9</span>f,stroke:#<span class="hljs-number">333</span>,stroke-width:<span class="hljs-number">4</span>px    <span class="hljs-attribute">style</span> id<span class="hljs-number">2</span> fill:#ccf,stroke:#f<span class="hljs-number">66</span>,stroke-width:<span class="hljs-number">2</span>px,stroke-dasharray: <span class="hljs-number">5</span>, <span class="hljs-number">5</span></code></pre><pre><code class="hljs mermaid">graph LR    id1(Start)--&gt;id2(Stop)    style id1 fill:#f9f,stroke:#333,stroke-width:4px    style id2 fill:#ccf,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5</code></pre><hr><h4 id="五、图标"><a href="#五、图标" class="headerlink" title="五、图标"></a>五、图标</h4><pre><code class="hljs reasonml">graph LR    B<span class="hljs-literal">[&quot;<span class="hljs-identifier">fa</span>:<span class="hljs-identifier">fa</span>-<span class="hljs-identifier">twitter</span> 和平&quot;]</span>    B--&gt;C<span class="hljs-literal">[<span class="hljs-identifier">fa</span>:<span class="hljs-identifier">fa</span>-<span class="hljs-identifier">ban</span> 禁止]</span>    B--&gt;<span class="hljs-constructor">D(<span class="hljs-params">fa</span>:<span class="hljs-params">fa</span>-<span class="hljs-params">spinner</span>)</span>;    B--&gt;<span class="hljs-constructor">E(A <span class="hljs-params">fa</span>:<span class="hljs-params">fa</span>-<span class="hljs-params">camera</span>-<span class="hljs-params">retro</span> 也许?)</span>;</code></pre><pre><code class="hljs mermaid">graph LR    B[&quot;fa:fa-twitter 和平&quot;]    B--&gt;C[fa:fa-ban 禁止]    B--&gt;D(fa:fa-spinner);    B--&gt;E(A fa:fa-camera-retro 也许?);</code></pre>]]></content>
-    
-    
-    <summary type="html">&lt;p&gt;这里是摘要&lt;/p&gt;</summary>
+    <content type="html"><![CDATA[<p>简要描述书写md文件时候如何使用流程图</p><a id="more"></a><h3 id="练习在markdown中使用mermaid"><a href="#练习在markdown中使用mermaid" class="headerlink" title="练习在markdown中使用mermaid"></a>练习在markdown中使用mermaid</h3><hr><h4 id="一、基础图形与基础与基础形状"><a href="#一、基础图形与基础与基础形状" class="headerlink" title="一、基础图形与基础与基础形状"></a>一、基础图形与基础与基础形状</h4><pre><code class="hljs angelscript">graph TD;<span class="hljs-number">11</span>[直角矩形]<span class="hljs-number">22</span>(圆角矩形)<span class="hljs-number">33</span>((圆形))<span class="hljs-number">44</span>&#123;棱形&#125;<span class="hljs-number">55</span>&gt;奇怪的形状]<span class="hljs-number">1</span>(起始位置)id2(准备材料)id3(操作流程)id4(收尾工作)<span class="hljs-number">1</span> --&gt; id2<span class="hljs-number">1</span> ==&gt; id3<span class="hljs-number">1</span> -.-&gt; id4</code></pre><pre><code class="hljs mermaid">graph TD;11[直角矩形]22(圆角矩形)33((圆形))44&#123;棱形&#125;55&gt;奇怪的形状]1(起始位置)id2(准备材料)id3(操作流程)id4(收尾工作)1 --&gt; id21 &#x3D;&#x3D;&gt; id31 -.-&gt; id4</code></pre><hr><h4 id="二、稍微复杂的图形"><a href="#二、稍微复杂的图形" class="headerlink" title="二、稍微复杂的图形"></a>二、稍微复杂的图形</h4><pre><code class="hljs erlang-repl">sequenceDiagramA-&gt;&gt;B: How are you?B-&gt;&gt;A: Great!</code></pre><pre><code class="hljs mermaid">sequenceDiagramA-&gt;&gt;B: How are you?B-&gt;&gt;A: Great!</code></pre><hr><h4 id="三、子图（还没搞明白）"><a href="#三、子图（还没搞明白）" class="headerlink" title="三、子图（还没搞明白）"></a>三、子图（还没搞明白）</h4><pre><code class="hljs armasm"><span class="hljs-symbol">graph</span> TB        subgraph one    <span class="hljs-built_in">a1</span>    <span class="hljs-built_in">a2</span>    <span class="hljs-meta">end</span>    subgraph two    b1--&gt;b2    <span class="hljs-meta">end</span>    subgraph three    <span class="hljs-built_in">c1</span>--&gt;<span class="hljs-built_in">c2</span>    <span class="hljs-meta">end</span></code></pre><pre><code class="hljs mermaid">graph TB        subgraph one    a1    a2    end    subgraph two    b1--&gt;b2    end    subgraph three    c1--&gt;c2    end</code></pre><hr><h4 id="四、花里胡哨的样式"><a href="#四、花里胡哨的样式" class="headerlink" title="四、花里胡哨的样式"></a>四、花里胡哨的样式</h4><p>(控制格子的样式)</p><pre><code class="hljs apache"><span class="hljs-attribute">graph</span> LR    <span class="hljs-attribute">id1</span>(Start)--&gt;id<span class="hljs-number">2</span>(Stop)    <span class="hljs-attribute">style</span> id<span class="hljs-number">1</span> fill:#f<span class="hljs-number">9</span>f,stroke:#<span class="hljs-number">333</span>,stroke-width:<span class="hljs-number">4</span>px    <span class="hljs-attribute">style</span> id<span class="hljs-number">2</span> fill:#ccf,stroke:#f<span class="hljs-number">66</span>,stroke-width:<span class="hljs-number">2</span>px,stroke-dasharray: <span class="hljs-number">5</span>, <span class="hljs-number">5</span></code></pre><pre><code class="hljs mermaid">graph LR    id1(Start)--&gt;id2(Stop)    style id1 fill:#f9f,stroke:#333,stroke-width:4px    style id2 fill:#ccf,stroke:#f66,stroke-width:2px,stroke-dasharray: 5, 5</code></pre><hr><h4 id="五、图标"><a href="#五、图标" class="headerlink" title="五、图标"></a>五、图标</h4><pre><code class="hljs reasonml">graph LR    B<span class="hljs-literal">[&quot;<span class="hljs-identifier">fa</span>:<span class="hljs-identifier">fa</span>-<span class="hljs-identifier">twitter</span> 和平&quot;]</span>    B--&gt;C<span class="hljs-literal">[<span class="hljs-identifier">fa</span>:<span class="hljs-identifier">fa</span>-<span class="hljs-identifier">ban</span> 禁止]</span>    B--&gt;<span class="hljs-constructor">D(<span class="hljs-params">fa</span>:<span class="hljs-params">fa</span>-<span class="hljs-params">spinner</span>)</span>;    B--&gt;<span class="hljs-constructor">E(A <span class="hljs-params">fa</span>:<span class="hljs-params">fa</span>-<span class="hljs-params">camera</span>-<span class="hljs-params">retro</span> 也许?)</span>;</code></pre><pre><code class="hljs mermaid">graph LR    B[&quot;fa:fa-twitter 和平&quot;]    B--&gt;C[fa:fa-ban 禁止]    B--&gt;D(fa:fa-spinner);    B--&gt;E(A fa:fa-camera-retro 也许?);</code></pre>]]></content>
     
     
+    <summary type="html">&lt;p&gt;简要描述书写md文件时候如何使用流程图&lt;/p&gt;</summary>
     
     
-    <category term="随笔" scheme="http://example.com/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+    <category term="博客相关" scheme="http://example.com/categories/%E5%8D%9A%E5%AE%A2%E7%9B%B8%E5%85%B3/"/>
+    
     
   </entry>
   
